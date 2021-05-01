@@ -5,7 +5,7 @@ export default [
   {
     input: './src/uuid.js',
     output: {
-      type: 'umd',
+      format: 'umd',
       file: pkg.main,
       name: 'uuid',
     },
@@ -14,7 +14,7 @@ export default [
   {
     input: './src/uuid.js',
     output: {
-      type: 'es',
+      format: 'es',
       file: pkg.module,
     },
     plugins: [terser()],
