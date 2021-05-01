@@ -8,7 +8,6 @@ export default [
       type: 'umd',
       file: pkg.main,
       name: 'uuid',
-      sourcemap: true,
     },
     plugins: [terser()],
   },
@@ -17,7 +16,6 @@ export default [
     output: {
       type: 'es',
       file: pkg.module,
-      sourcemap: true,
     },
     plugins: [terser()],
   },
