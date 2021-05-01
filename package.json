@@ -16,6 +16,10 @@
   "main": "dist/uuid-random.js",
   "module": "dist/uuid-random.mjs",
   "types": "index.d.ts",
+  "files": [
+    "dist/**",
+    "index.d.ts"
+  ],
   "scripts": {
     "build": "rollup -c",
     "test": "jest"
