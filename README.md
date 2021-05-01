@@ -1,19 +1,18 @@
-# uuid-random
+# uuid-random-es
 
-[![MIT Licence](https://img.shields.io/badge/License-MIT-informational)](LICENSE.txt)
-[![Stable](https://img.shields.io/badge/Stable-1.3.0-brightgreen)](https://github.com/jchook/uuid-random/releases)
+![MIT Licence](https://img.shields.io/badge/License-MIT-informational)
+[![Stable](https://img.shields.io/badge/Stable-2.0.0-brightgreen)](https://github.com/ubermanu/uuid-random-es/releases)
 
 Generate RFC-4122 compliant [random UUIDs](https://en.wikipedia.org/wiki/Universally_unique_identifier#Version_4_.28random.29) (version 4) with better [statistical dispersion](https://en.wikipedia.org/wiki/Statistical_dispersion) than `Math.random()`.
-
 
 
 ## Install
 
 ```sh
-npm i uuid-random
+npm i uuid-random-es
 ```
 
-Or download the [latest release](https://github.com/jchook/uuid-random/releases).
+Or download the [latest release](https://github.com/ubermanu/uuid-random-es/releases).
 
 ## Features
 
@@ -55,24 +54,17 @@ _Note, if you plan to use UUIDs for a new project, depending on your requirement
 
 ## Example Usage
 
-### Babel
+### ES
 
 ```javascript
-import uuid from 'uuid-random';
+import uuid from 'uuid-random-es';
 uuid(); // 'f32dc9ae-7ca8-44ca-8f25-f258f7331c55'
-```
-
-### Node
-
-```javascript
-var uuid = require('uuid-random');
-uuid(); // '0b99b82f-62cf-4275-88b3-de039020f14e'
 ```
 
 ### Browser
 
 ```html
-<script src="uuid-random.min.js"></script>
+<script src="uuid-random-es.js"></script>
 <script>
   uuid(); // 'b96ab5e6-f1e8-4653-ab08-4dd82ea65778'
 </script>
@@ -89,12 +81,3 @@ uuid.test('0b99b82f-62cf-4275-88b3-de039020f14e'); // true
 ```javascript
 uuid.bin(); // <Buffer 41 db 10 54 b3 61 48 50 87 f1 2f 7b 08 a5 0f 06>
 ```
-
-
-## Contributing
-
-Feel free to [open an issue](https://github.com/jchook/uuid-random/issues) or submit a [pull request](https://github.com/jchook/uuid-random/pulls).
-
-## License
-
-MIT.
