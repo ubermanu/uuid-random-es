@@ -15,7 +15,7 @@
   "type": "module",
   "main": "dist/uuid-random.js",
   "module": "dist/uuid-random.mjs",
-  "types": "src/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "build": "rollup -c",
     "test": "node test.js"
