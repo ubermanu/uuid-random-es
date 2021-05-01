@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "minify": "minify --js < index.js > uuid-random.min.js",
+    "build": "rollup -c",
     "test": "node test.js"
   },
   "repository": {
@@ -27,5 +27,9 @@
   "homepage": "https://github.com/jchook/uuid-random#readme",
   "browser": {
     "crypto": false
+  },
+  "devDependencies": {
+    "rollup": "^2.46.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
