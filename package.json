@@ -28,9 +28,12 @@
     "crypto": false
   },
   "exports": {
-    "require": "./dist/uuid-random-es.js",
-    "import": "./dist/uuid-random-es.mjs",
-    "default": "./dist/uuid-random-es.mjs"
+    ".": {
+      "require": "./dist/uuid-random-es.js",
+      "import": "./dist/uuid-random-es.mjs",
+      "default": "./dist/uuid-random-es.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.0",
