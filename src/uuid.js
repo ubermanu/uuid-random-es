@@ -6,7 +6,7 @@ for (i = 0; i < 256; i++) {
 }
 
 // String UUIDv4 (Random)
-function uuid() {
+export default function uuid() {
   const b = uuidBin();
   return hexBytes[b[0]] + hexBytes[b[1]] +
     hexBytes[b[2]] + hexBytes[b[3]] + '-' +
@@ -99,7 +99,4 @@ if (typeof crypto !== 'undefined') {
 
 if ((typeof module !== 'undefined') && (typeof require === 'function')) {
   crypt0 = crypt0 || require('crypto');
-  module.exports = uuid;
-} else if (typeof window !== 'undefined') {
-  window.uuid = uuid;
 }
