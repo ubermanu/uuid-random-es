@@ -1,4 +1,8 @@
-let buf, bufIdx = 0, hexBytes = [], i, crypt0;
+let buf,
+  bufIdx = 0,
+  hexBytes = [],
+  i,
+  crypt0;
 
 // Pre-calculate toString(16) for speed
 for (i = 0; i < 256; i++) {
@@ -8,15 +12,28 @@ for (i = 0; i < 256; i++) {
 // String UUIDv4 (Random)
 function uuid() {
   const b = uuidBin();
-  return hexBytes[b[0]] + hexBytes[b[1]] +
-    hexBytes[b[2]] + hexBytes[b[3]] + '-' +
-    hexBytes[b[4]] + hexBytes[b[5]] + '-' +
-    hexBytes[b[6]] + hexBytes[b[7]] + '-' +
-    hexBytes[b[8]] + hexBytes[b[9]] + '-' +
-    hexBytes[b[10]] + hexBytes[b[11]] +
-    hexBytes[b[12]] + hexBytes[b[13]] +
-    hexBytes[b[14]] + hexBytes[b[15]]
-    ;
+  return (
+    hexBytes[b[0]] +
+    hexBytes[b[1]] +
+    hexBytes[b[2]] +
+    hexBytes[b[3]] +
+    '-' +
+    hexBytes[b[4]] +
+    hexBytes[b[5]] +
+    '-' +
+    hexBytes[b[6]] +
+    hexBytes[b[7]] +
+    '-' +
+    hexBytes[b[8]] +
+    hexBytes[b[9]] +
+    '-' +
+    hexBytes[b[10]] +
+    hexBytes[b[11]] +
+    hexBytes[b[12]] +
+    hexBytes[b[13]] +
+    hexBytes[b[14]] +
+    hexBytes[b[15]]
+  );
 }
 
 // Buffer random numbers for speed
@@ -28,43 +45,46 @@ uuid.BUFFER_SIZE = 4096;
 uuid.bin = uuidBin;
 
 // Clear buffer
-uuid.clearBuffer = function() {
+uuid.clearBuffer = function () {
   buf = null;
   bufIdx = 0;
 };
 
 // Test for uuid
-uuid.test = function(uuid) {
+uuid.test = function (uuid) {
   if (typeof uuid === 'string') {
-    return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(uuid);
+    return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+      uuid
+    );
   }
   return false;
 };
 
 // Use best available PRNG
 // Also expose this so you can override it.
-uuid.randomBytes = (function() {
+uuid.randomBytes = (function () {
   if (crypt0) {
     if (crypt0.randomBytes) {
       return crypt0.randomBytes;
     }
     if (crypt0.getRandomValues) {
       if (typeof Uint8Array.prototype.slice !== 'function') {
-        return function(n) {
+        return function (n) {
           let bytes = new Uint8Array(n);
           crypt0.getRandomValues(bytes);
           return Array.from(bytes);
         };
       }
-      return function(n) {
+      return function (n) {
         let bytes = new Uint8Array(n);
         crypt0.getRandomValues(bytes);
         return bytes;
       };
     }
   }
-  return function(n) {
-    let i, r = [];
+  return function (n) {
+    let i,
+      r = [];
     for (i = 0; i < n; i++) {
       r.push(Math.floor(Math.random() * 256));
     }
@@ -74,11 +94,11 @@ uuid.randomBytes = (function() {
 
 // Buffer some random bytes for speed
 function randomBytesBuffered(n) {
-  if (!buf || ((bufIdx + n) > uuid.BUFFER_SIZE)) {
+  if (!buf || bufIdx + n > uuid.BUFFER_SIZE) {
     bufIdx = 0;
     buf = uuid.randomBytes(uuid.BUFFER_SIZE);
   }
-  return buf.slice(bufIdx, bufIdx += n);
+  return buf.slice(bufIdx, (bufIdx += n));
 }
 
 // uuid.bin
@@ -92,11 +112,14 @@ function uuidBin() {
 // Node & Browser support
 if (typeof crypto !== 'undefined') {
   crypt0 = crypto;
-} else if ((typeof window !== 'undefined') && (typeof window.msCrypto !== 'undefined')) {
+} else if (
+  typeof window !== 'undefined' &&
+  typeof window.msCrypto !== 'undefined'
+) {
   crypt0 = window.msCrypto; // IE11
 }
 
-if ((typeof module !== 'undefined') && (typeof require === 'function')) {
+if (typeof module !== 'undefined' && typeof require === 'function') {
   crypt0 = crypt0 || require('crypto');
 }
 
