@@ -1,6 +1,6 @@
-declare function index(): string;
+declare function uuid(): string;
 
-declare namespace index {
+declare namespace uuid {
   let BUFFER_SIZE: number;
 
   function bin(): Uint8Array;
@@ -8,4 +8,4 @@ declare namespace index {
   function test(uuid: string): boolean;
 }
 
-export = index;
+export default uuid;
