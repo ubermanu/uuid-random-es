@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>uuid-random</title>
   </head>
   <body>
-    <script src="index.js"></script>
-    <script>alert(uuid());</script>
+    <script src="../dist/uuid-random.js"></script>
+    <script>
+      document.write(uuid());
+    </script>
+    <script type="module">
+      import uuid from '../dist/uuid-random.mjs';
+      console.log(uuid());
+    </script>
   </body>
 </html>
