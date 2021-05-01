@@ -1,4 +1,4 @@
-let buf, bufIdx = 0, hexBytes = [], i;
+let buf, bufIdx = 0, hexBytes = [], i, crypt0;
 
 // Pre-calculate toString(16) for speed
 for (i = 0; i < 256; i++) {
@@ -6,7 +6,7 @@ for (i = 0; i < 256; i++) {
 }
 
 // String UUIDv4 (Random)
-export default function uuid() {
+function uuid() {
   const b = uuidBin();
   return hexBytes[b[0]] + hexBytes[b[1]] +
     hexBytes[b[2]] + hexBytes[b[3]] + '-' +
@@ -90,7 +90,6 @@ function uuidBin() {
 }
 
 // Node & Browser support
-let crypt0;
 if (typeof crypto !== 'undefined') {
   crypt0 = crypto;
 } else if ((typeof window !== 'undefined') && (typeof window.msCrypto !== 'undefined')) {
@@ -100,3 +99,5 @@ if (typeof crypto !== 'undefined') {
 if ((typeof module !== 'undefined') && (typeof require === 'function')) {
   crypt0 = crypt0 || require('crypto');
 }
+
+export default uuid;
