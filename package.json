@@ -1,17 +1,7 @@
 {
-  "name": "uuid-random",
-  "version": "1.3.0",
-  "description": "Fastest UUIDv4 with good RNG",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
-  "scripts": {
-    "build": "rollup -c",
-    "test": "node test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jchook/uuid-random.git"
-  },
+  "name": "uuid-random-es",
+  "version": "2.0.0",
+  "description": "Fastest UUIDv4 with good RNG (from Wes Roberts)",
   "keywords": [
     "uuid",
     "fast",
@@ -19,12 +9,17 @@
     "v4",
     "tiny"
   ],
-  "author": "Wes Roberts",
+  "author": "ubermanu <manu@paca.happy-dev.fr>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jchook/uuid-random/issues"
+  "repository": "git+https://github.com/ubermanu/uuid-random-es.git",
+  "type": "module",
+  "main": "dist/uuid-random.js",
+  "module": "dist/uuid-random.mjs",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "node test.js"
   },
-  "homepage": "https://github.com/jchook/uuid-random#readme",
   "browser": {
     "crypto": false
   },
